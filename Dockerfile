@@ -1,9 +1,8 @@
-
 FROM arm64v8/debian:buster-slim as fusionauthbuild
 
+###### get build-arguments  #########
 ARG FUSIONAUTH_VERSION
 RUN echo "FusionAuth version :  $FUSIONAUTH_VERSION"
-
 
 ###### Install stuff we need and then cleanup cache #################
 RUN apt update && apt install unzip curl -y
@@ -17,18 +16,20 @@ RUN curl -Sk --progress-bar https://storage.googleapis.com/inversoft_products_j0
 
 
 
-
-
+###### produce the final container #########################
 FROM arm64v8/debian:buster-slim
 
-COPY --from=javabuild /jlinked /opt/openjdk
+###### copy java into container #############################
+COPY --from=jerryhopper/fusionauth-java-arm64 /jlinked /opt/openjdk
 
+###### create user  #########################################
 RUN groupadd fusionauth
 RUN useradd -r -s /bin/sh -g fusionauth -u 1001 fusionauth
 
+###### copy fusionauth into contaner ########################
 COPY --chown=fusionauth:fusionauth --from=jerryhopper/fusionauth-java-arm64 /usr/local/fusionauth /usr/local/fusionauth
 
-
+###### set enviroment variables ########################
 ENV JAVA_HOME=/opt/openjdk/
 ENV PATH=$PATH:$JAVA_HOME/bin
 
