@@ -7,8 +7,11 @@ FusionAuth loves containers, even on Arm64!
 
 This is the Fusionauth Application for Arm64, Not officially supported but maintained by @jerryhopper.
 
+the source for this container is available in this repo : https://github.com/jerryhopper/fusionauth_app_arm64
 
 More info & documentation on the original product :  [fusionauth.io](https://fusionauth.io)
+
+
 
 
 ## Credits
