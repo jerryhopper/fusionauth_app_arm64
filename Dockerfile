@@ -27,7 +27,7 @@ RUN groupadd fusionauth
 RUN useradd -r -s /bin/sh -g fusionauth -u 1001 fusionauth
 
 ###### copy fusionauth into contaner ########################
-COPY --chown=fusionauth:fusionauth --from=java /usr/local/fusionauth /usr/local/fusionauth
+COPY --chown=fusionauth:fusionauth --from=fusionauthbuild /usr/local/fusionauth /usr/local/fusionauth
 
 ###### set enviroment variables ########################
 ENV JAVA_HOME=/opt/openjdk/
