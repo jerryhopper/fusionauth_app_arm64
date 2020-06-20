@@ -14,20 +14,20 @@ RUN curl -Sk --progress-bar https://storage.googleapis.com/inversoft_products_j0
   && unzip -nq fusionauth-app.zip -d /usr/local/fusionauth
 
 
-
+FROM jerryhopper/fusionauth-java-arm64 as java 
 
 ###### produce the final container #########################
 FROM arm64v8/debian:buster-slim
 
 ###### copy java into container #############################
-COPY --from=jerryhopper/fusionauth-java-arm64 /opt/openjdk /opt/openjdk
+COPY --from=java /opt/openjdk /opt/openjdk
 
 ###### create user  #########################################
 RUN groupadd fusionauth
 RUN useradd -r -s /bin/sh -g fusionauth -u 1001 fusionauth
 
 ###### copy fusionauth into contaner ########################
-COPY --chown=fusionauth:fusionauth --from=jerryhopper/fusionauth-java-arm64 /usr/local/fusionauth /usr/local/fusionauth
+COPY --chown=fusionauth:fusionauth --from=java /usr/local/fusionauth /usr/local/fusionauth
 
 ###### set enviroment variables ########################
 ENV JAVA_HOME=/opt/openjdk/
