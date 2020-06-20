@@ -20,7 +20,7 @@ RUN curl -Sk --progress-bar https://storage.googleapis.com/inversoft_products_j0
 FROM arm64v8/debian:buster-slim
 
 ###### copy java into container #############################
-COPY --from=jerryhopper/fusionauth-java-arm64 /jlinked /opt/openjdk
+COPY --from=jerryhopper/fusionauth-java-arm64 /opt/openjdk /opt/openjdk
 
 ###### create user  #########################################
 RUN groupadd fusionauth
