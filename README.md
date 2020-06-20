@@ -5,7 +5,10 @@
 
 FusionAuth loves containers, even on Arm64!
 
-This is the Fusionauth Application for Arm64, Not officially supported but maintained by @jerryhopper
+This is the Fusionauth Application for Arm64, Not officially supported but maintained by @jerryhopper.
+
+
+More info & documentation on the original product :  [fusionauth.io](https://fusionauth.io)
 
 
 ## Credits
@@ -15,6 +18,7 @@ This is the Fusionauth Application for Arm64, Not officially supported but maint
 <br>
 
 ## Docker
+
 
 ### Docker Compose
 
