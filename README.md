@@ -45,7 +45,7 @@ Docker images are available on [Docker Hub](https://hub.docker.com/u/jerryhopper
 
 FusionAuth App
 ```bash
-docker pull jerryhopper/fusionauth-app-arm64
+docker pull jerryhopper/fusionauth-app
 ```
 
 <br>
